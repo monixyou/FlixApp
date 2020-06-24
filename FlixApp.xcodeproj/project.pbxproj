@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		14D40A5A24A3B983001A6447 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A5924A3B983001A6447 /* AppDelegate.m */; };
 		14D40A5D24A3B983001A6447 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A5C24A3B983001A6447 /* SceneDelegate.m */; };
-		14D40A6024A3B983001A6447 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A5F24A3B983001A6447 /* ViewController.m */; };
 		14D40A6324A3B983001A6447 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14D40A6124A3B983001A6447 /* Main.storyboard */; };
 		14D40A6524A3B985001A6447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14D40A6424A3B985001A6447 /* Assets.xcassets */; };
 		14D40A6824A3B985001A6447 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14D40A6624A3B985001A6447 /* LaunchScreen.storyboard */; };
@@ -17,6 +16,7 @@
 		14D40A7524A3B985001A6447 /* FlixAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A7424A3B985001A6447 /* FlixAppTests.m */; };
 		14D40A8024A3B985001A6447 /* FlixAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A7F24A3B985001A6447 /* FlixAppUITests.m */; };
 		14D40A8F24A3C357001A6447 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A8E24A3C357001A6447 /* MoviesViewController.m */; };
+		14D40A9824A3D7DD001A6447 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A9724A3D7DD001A6447 /* MovieCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +42,6 @@
 		14D40A5924A3B983001A6447 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		14D40A5B24A3B983001A6447 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		14D40A5C24A3B983001A6447 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		14D40A5E24A3B983001A6447 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		14D40A5F24A3B983001A6447 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		14D40A6224A3B983001A6447 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14D40A6424A3B985001A6447 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14D40A6724A3B985001A6447 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +55,8 @@
 		14D40A8124A3B985001A6447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14D40A8D24A3C357001A6447 /* MoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		14D40A8E24A3C357001A6447 /* MoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		14D40A9624A3D7DD001A6447 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		14D40A9724A3D7DD001A6447 /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,19 +107,18 @@
 		14D40A5724A3B983001A6447 /* FlixApp */ = {
 			isa = PBXGroup;
 			children = (
+				14D40A9224A3C56C001A6447 /* Models */,
+				14D40A9124A3C55D001A6447 /* Views */,
+				14D40A9024A3C4F2001A6447 /* View Controllers */,
 				14D40A5824A3B983001A6447 /* AppDelegate.h */,
 				14D40A5924A3B983001A6447 /* AppDelegate.m */,
 				14D40A5B24A3B983001A6447 /* SceneDelegate.h */,
 				14D40A5C24A3B983001A6447 /* SceneDelegate.m */,
-				14D40A5E24A3B983001A6447 /* ViewController.h */,
-				14D40A5F24A3B983001A6447 /* ViewController.m */,
 				14D40A6124A3B983001A6447 /* Main.storyboard */,
 				14D40A6424A3B985001A6447 /* Assets.xcassets */,
 				14D40A6624A3B985001A6447 /* LaunchScreen.storyboard */,
 				14D40A6924A3B985001A6447 /* Info.plist */,
 				14D40A6A24A3B985001A6447 /* main.m */,
-				14D40A8D24A3C357001A6447 /* MoviesViewController.h */,
-				14D40A8E24A3C357001A6447 /* MoviesViewController.m */,
 			);
 			path = FlixApp;
 			sourceTree = "<group>";
@@ -140,6 +139,31 @@
 				14D40A8124A3B985001A6447 /* Info.plist */,
 			);
 			path = FlixAppUITests;
+			sourceTree = "<group>";
+		};
+		14D40A9024A3C4F2001A6447 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				14D40A8D24A3C357001A6447 /* MoviesViewController.h */,
+				14D40A8E24A3C357001A6447 /* MoviesViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		14D40A9124A3C55D001A6447 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				14D40A9624A3D7DD001A6447 /* MovieCell.h */,
+				14D40A9724A3D7DD001A6447 /* MovieCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		14D40A9224A3C56C001A6447 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,8 +296,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14D40A6024A3B983001A6447 /* ViewController.m in Sources */,
 				14D40A5A24A3B983001A6447 /* AppDelegate.m in Sources */,
+				14D40A9824A3D7DD001A6447 /* MovieCell.m in Sources */,
 				14D40A8F24A3C357001A6447 /* MoviesViewController.m in Sources */,
 				14D40A6B24A3B985001A6447 /* main.m in Sources */,
 				14D40A5D24A3B983001A6447 /* SceneDelegate.m in Sources */,
