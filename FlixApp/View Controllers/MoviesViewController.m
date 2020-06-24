@@ -8,6 +8,7 @@
 
 #import "MoviesViewController.h"
 #import "MovieCell.h"
+#import "UIImageView+AFNetworking.h"
 
 // Step 2: Configure controller to implement two interfaces the table view expects (data source and delegate)
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -62,6 +63,13 @@
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     
+    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
+    NSString *posterURLString = movie[@"poster_path"];
+    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
+    
+    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
+    cell.posterView.image = nil;
+    [cell.posterView setImageWithURL:posterURL];
     
     return cell;
 }
