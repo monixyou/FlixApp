@@ -16,6 +16,7 @@
 		14D40A6B24A3B985001A6447 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A6A24A3B985001A6447 /* main.m */; };
 		14D40A7524A3B985001A6447 /* FlixAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A7424A3B985001A6447 /* FlixAppTests.m */; };
 		14D40A8024A3B985001A6447 /* FlixAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A7F24A3B985001A6447 /* FlixAppUITests.m */; };
+		14D40A8F24A3C357001A6447 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A8E24A3C357001A6447 /* MoviesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		14D40A7B24A3B985001A6447 /* FlixAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlixAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14D40A7F24A3B985001A6447 /* FlixAppUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlixAppUITests.m; sourceTree = "<group>"; };
 		14D40A8124A3B985001A6447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14D40A8D24A3C357001A6447 /* MoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
+		14D40A8E24A3C357001A6447 /* MoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				14D40A6624A3B985001A6447 /* LaunchScreen.storyboard */,
 				14D40A6924A3B985001A6447 /* Info.plist */,
 				14D40A6A24A3B985001A6447 /* main.m */,
+				14D40A8D24A3C357001A6447 /* MoviesViewController.h */,
+				14D40A8E24A3C357001A6447 /* MoviesViewController.m */,
 			);
 			path = FlixApp;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 			files = (
 				14D40A6024A3B983001A6447 /* ViewController.m in Sources */,
 				14D40A5A24A3B983001A6447 /* AppDelegate.m in Sources */,
+				14D40A8F24A3C357001A6447 /* MoviesViewController.m in Sources */,
 				14D40A6B24A3B985001A6447 /* main.m in Sources */,
 				14D40A5D24A3B983001A6447 /* SceneDelegate.m in Sources */,
 			);
