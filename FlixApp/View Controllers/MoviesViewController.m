@@ -20,8 +20,7 @@
 // Step 1: Create outlet for table view to refer
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+@property (nonatomic, strong) UIAlertController *alert;
 
 @end
 
@@ -30,20 +29,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
+           message:@"The internet connection appears to be offline."
+    preferredStyle:(UIAlertControllerStyleAlert)];
+    // create an Try Again action
+    UIAlertAction *tryAction = [UIAlertAction actionWithTitle:@"Try Again"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         [self fetchMovies];
+                                                     }];
+    [self.alert addAction:tryAction];
+    
     // Step 3: Set view controller to be the data source and delegate
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    // Start the activity indicator
-    [self.activityIndicator startAnimating];
-    
-    
     [self fetchMovies];
-    [NSThread sleepForTimeInterval:2.0f];
-    
-//     Stop the activity indicator
-//     Hides automatically if "Hides When Stopped" is enabled
-    [self.activityIndicator stopAnimating];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
@@ -63,6 +64,7 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
            if (error != nil) {
                NSLog(@"%@", [error localizedDescription]);
+               [self presentViewController:self.alert animated:YES completion:^{}];
            }
            else {
                
