@@ -35,9 +35,7 @@
     self.tableView.delegate = self;
     
     // Start the activity indicator
-//    [self.activityIndicator startAnimating];
-    
-    
+    [self.activityIndicator startAnimating];
     
     
     [self fetchMovies];
@@ -45,7 +43,7 @@
     
 //     Stop the activity indicator
 //     Hides automatically if "Hides When Stopped" is enabled
-//    [self.activityIndicator stopAnimating];
+    [self.activityIndicator stopAnimating];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
@@ -54,7 +52,10 @@
 
 - (void)fetchMovies {
     
-    [SVProgressHUD showWithStatus:@"It's working?"];
+    // Tells control when to stop refreshing -> both when error and when no error
+    [self.refreshControl endRefreshing];
+    
+    [SVProgressHUD showWithStatus:@"Finding movies..."];
     
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
@@ -73,8 +74,6 @@
                // Step 6: Reload your table view data
                [self.tableView reloadData];
            }
-        // Tells control when to stop refreshing -> both when error and when no error
-        [self.refreshControl endRefreshing];
         
         [SVProgressHUD dismiss];
         
