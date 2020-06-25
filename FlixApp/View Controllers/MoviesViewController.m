@@ -10,6 +10,7 @@
 #import "MovieCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
+#import "SVProgressHUD.h"
 
 // Step 2: Configure controller to implement two interfaces the table view expects (data source and delegate)
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -19,6 +20,8 @@
 // Step 1: Create outlet for table view to refer
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 
 @end
 
@@ -30,8 +33,19 @@
     // Step 3: Set view controller to be the data source and delegate
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-
+    
+    // Start the activity indicator
+//    [self.activityIndicator startAnimating];
+    
+    
+    
+    
     [self fetchMovies];
+    [NSThread sleepForTimeInterval:2.0f];
+    
+//     Stop the activity indicator
+//     Hides automatically if "Hides When Stopped" is enabled
+//    [self.activityIndicator stopAnimating];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
@@ -39,6 +53,9 @@
 }
 
 - (void)fetchMovies {
+    
+    [SVProgressHUD showWithStatus:@"It's working?"];
+    
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
@@ -47,6 +64,7 @@
                NSLog(@"%@", [error localizedDescription]);
            }
            else {
+               
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                               
                // Get the array of movies -> calls table view row count and content
@@ -57,6 +75,9 @@
            }
         // Tells control when to stop refreshing -> both when error and when no error
         [self.refreshControl endRefreshing];
+        
+        [SVProgressHUD dismiss];
+        
        }];
     [task resume];
 }
