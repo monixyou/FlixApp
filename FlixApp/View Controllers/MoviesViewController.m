@@ -130,6 +130,12 @@
 
 }
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.text = @"";
+    self.searchBar.showsCancelButton = false;
+    [self.view endEditing:YES];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
