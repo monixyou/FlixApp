@@ -13,13 +13,16 @@
 #import "SVProgressHUD.h"
 
 // Step 2: Configure controller to implement two interfaces the table view expects (data source and delegate)
-@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 // Store the movies in a property to use elsewhere
 @property (nonatomic, strong) NSArray *movies;
 // Step 1: Create outlet for table view to refer
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSArray *filteredData;
 
 @end
 
@@ -31,7 +34,8 @@
     // Step 3: Set view controller to be the data source and delegate
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.searchBar.delegate = self;
+        
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -72,6 +76,7 @@
                               
                // Get the array of movies -> calls table view row count and content
                self.movies = dataDictionary[@"results"];
+               self.filteredData = self.movies;
                
                // Step 6: Reload your table view data
                [self.tableView reloadData];
@@ -85,7 +90,7 @@
 
 // Step 4: Method for how many rows you have
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
+    return self.filteredData.count;
 }
 
 // Step 5: Method to create and configure a cell based on a different index path
@@ -93,7 +98,7 @@
     
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredData[indexPath.row];
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     
@@ -106,6 +111,23 @@
     [cell.posterView setImageWithURL:posterURL];
     
     return cell;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            return [[evaluatedObject[@"title"] lowercaseString] containsString:[searchText lowercaseString]];
+        }];
+        self.filteredData = [self.movies filteredArrayUsingPredicate:predicate];
+    }
+    else {
+        self.filteredData = self.movies;
+    }
+
+    [self.tableView reloadData];
+
 }
 
 #pragma mark - Navigation

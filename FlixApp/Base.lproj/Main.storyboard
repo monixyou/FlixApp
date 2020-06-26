@@ -20,9 +20,14 @@
                                 <rect key="frame" x="-2" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Search Movie Titles " id="bvp-Ct-a69">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="142" id="fd3-Bx-5NJ" customClass="MovieCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="142"/>
+                                        <rect key="frame" x="0.0" y="84" width="414" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fd3-Bx-5NJ" id="SMm-Nt-g27">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
@@ -65,6 +70,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="1sH-uB-uDf"/>
                     <connections>
+                        <outlet property="searchBar" destination="bvp-Ct-a69" id="Z9g-Nv-FbI"/>
                         <outlet property="tableView" destination="w9X-9m-dmQ" id="3hw-T9-guH"/>
                     </connections>
                 </viewController>
@@ -236,7 +242,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="w9f-nL-jVb"/>
+        <segue reference="qbu-Mr-K43"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
