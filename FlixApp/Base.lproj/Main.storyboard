@@ -184,7 +184,7 @@
         <scene sceneID="rba-cf-bxV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X3c-xW-1fX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="Uwq-0P-Zxa"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="Uwq-0P-Zxa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ezx-k7-LgF">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -221,7 +221,7 @@
         <scene sceneID="O9u-tn-Nk5">
             <objects>
                 <navigationController id="3Jn-h4-fRK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grid" id="4yC-Cg-1DJ"/>
+                    <tabBarItem key="tabBarItem" title="Grid" image="rectangle.grid.3x2.fill" catalog="system" id="4yC-Cg-1DJ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ChP-Cf-OTX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -238,4 +238,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="w9f-nL-jVb"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="rectangle.grid.3x2.fill" catalog="system" width="128" height="101"/>
+    </resources>
 </document>
