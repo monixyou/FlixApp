@@ -2,9 +2,7 @@
 
 FlixApp is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
-(Start: 9:45 am 6/24)
-(End: 3:00 pm 6/24)
+Time spent: **15** hours spent in total
 
 ## User Stories
 
@@ -31,27 +29,30 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
 - [X] Users can pull to refresh in grid view
 - [X] Users can watch the trailer for a movie from the description view
 
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. UI design techniques - how to make something look pretty with little tweaks and changes
+2. Color theory - what color combinations would look good for an application
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://g.recordit.co/D9sSKY2Z8N.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/QvNTlY2OoF.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+<img src='http://g.recordit.co/BdeH44VDNh.gif' title='Refresh and Networking Error Walkthrough' width='' alt='Refresh and Networking Error Walkthrough' />
+
+GIF created with [Recordit](https://recordit.co/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+SVProgressHUD - could not find window in AppDelegate, had to make window public in header of AppDelegate and add another line in SceneDelegate.
 
 ## Credits
 
