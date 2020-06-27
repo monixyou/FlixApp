@@ -44,6 +44,8 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://g.recordit.co/QvNTlY2OoF.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+Here's a walkthrough of the refresh and networking error functionalities:
+
 <img src='http://g.recordit.co/BdeH44VDNh.gif' title='Refresh and Networking Error Walkthrough' width='' alt='Refresh and Networking Error Walkthrough' />
 
 GIF created with [Recordit](https://recordit.co/).
