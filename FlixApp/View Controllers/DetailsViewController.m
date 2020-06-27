@@ -8,6 +8,7 @@
 
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "TrailerViewController.h"
 
 @interface DetailsViewController ()
 
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+@property (weak, nonatomic) IBOutlet UIButton *playTrailer;
 
 @end
 
@@ -23,6 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.playTrailer.layer.cornerRadius = 5;
+    self.playTrailer.clipsToBounds = YES;
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     
@@ -45,14 +50,16 @@
     [self.synopsisLabel sizeToFit];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    TrailerViewController *trailerViewController = [segue destinationViewController];
+    trailerViewController.movieID = self.movie[@"id"];
 }
-*/
+
 
 @end
