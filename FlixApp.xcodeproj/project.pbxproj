@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14560CA024ACF14600DC7F24 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 14560C9F24ACF14600DC7F24 /* Movie.m */; };
 		14AF53C324A6A052007630EA /* TrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AF53C224A6A052007630EA /* TrailerViewController.m */; };
 		14D40A5A24A3B983001A6447 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A5924A3B983001A6447 /* AppDelegate.m */; };
 		14D40A5D24A3B983001A6447 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D40A5C24A3B983001A6447 /* SceneDelegate.m */; };
@@ -45,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		095750CA59C2488647395656 /* Pods_FlixApp_FlixAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlixApp_FlixAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14560C9E24ACF14600DC7F24 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Movie.h; path = FlixApp/Models/Movie.h; sourceTree = SOURCE_ROOT; };
+		14560C9F24ACF14600DC7F24 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Movie.m; path = FlixApp/Models/Movie.m; sourceTree = SOURCE_ROOT; };
 		14AF53C124A6A052007630EA /* TrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrailerViewController.h; sourceTree = "<group>"; };
 		14AF53C224A6A052007630EA /* TrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrailerViewController.m; sourceTree = "<group>"; };
 		14D40A5524A3B983001A6447 /* FlixApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlixApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +202,8 @@
 		14D40A9224A3C56C001A6447 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				14560C9E24ACF14600DC7F24 /* Movie.h */,
+				14560C9F24ACF14600DC7F24 /* Movie.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 			files = (
 				14D40A5A24A3B983001A6447 /* AppDelegate.m in Sources */,
 				14D40A9824A3D7DD001A6447 /* MovieCell.m in Sources */,
+				14560CA024ACF14600DC7F24 /* Movie.m in Sources */,
 				14D40A8F24A3C357001A6447 /* MoviesViewController.m in Sources */,
 				14D40A9B24A3FCC0001A6447 /* DetailsViewController.m in Sources */,
 				14DCA45124A5C548007CB069 /* MovieCollectionCell.m in Sources */,

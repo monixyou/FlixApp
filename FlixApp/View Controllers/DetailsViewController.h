@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Movie.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailsViewController : UIViewController
 
 /// public property for movie to display
-@property (nonatomic, strong) NSDictionary *movie;
+@property (nonatomic, strong) Movie *movie;
 
 @end
 

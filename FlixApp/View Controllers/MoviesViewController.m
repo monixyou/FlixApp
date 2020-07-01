@@ -11,18 +11,19 @@
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 #import "SVProgressHUD.h"
+#import "Movie.h"
 
 // Step 2: Configure controller to implement two interfaces the table view expects (data source and delegate)
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 // Store the movies in a property to use elsewhere
-@property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) NSMutableArray *movies;
 // Step 1: Create outlet for table view to refer
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSArray *filteredData;
+@property (strong, nonatomic) NSMutableArray *filteredData;
 
 @end
 
@@ -35,6 +36,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
+    
+    self.movies = [[NSMutableArray alloc] init];
         
     [self fetchMovies];
     
@@ -74,9 +77,13 @@
            else {
                
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                              
-               // Get the array of movies -> calls table view row count and content
-               self.movies = dataDictionary[@"results"];
+               
+               NSArray *dictionaries = dataDictionary[@"results"];
+               
+               for (NSDictionary *dictionary in dictionaries) {
+                   Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
+                   [self.movies addObject:movie];
+               }
                self.filteredData = self.movies;
                
                // Step 6: Reload your table view data
@@ -99,17 +106,12 @@
     
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
-    NSDictionary *movie = self.filteredData[indexPath.row];
-    cell.titleLabel.text = movie[@"title"];
-    cell.synopsisLabel.text = movie[@"overview"];
-    
-    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
-    NSString *posterURLString = movie[@"poster_path"];
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    
-    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
+    Movie *movie = self.filteredData[indexPath.row];
+    cell.titleLabel.text = movie.title;
+    cell.synopsisLabel.text = movie.synopsis;
+
     cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:posterURL];
+    [cell.posterView setImageWithURL:movie.posterURL];
     
     return cell;
 }
@@ -120,7 +122,7 @@
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
             return [[evaluatedObject[@"title"] lowercaseString] containsString:[searchText lowercaseString]];
         }];
-        self.filteredData = [self.movies filteredArrayUsingPredicate:predicate];
+        self.filteredData = [NSMutableArray arrayWithArray:[self.movies filteredArrayUsingPredicate:predicate]];
     }
     else {
         self.filteredData = self.movies;
@@ -150,7 +152,7 @@
     
     UITableViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.filteredData[indexPath.row];
+    Movie *movie = self.filteredData[indexPath.row];
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;

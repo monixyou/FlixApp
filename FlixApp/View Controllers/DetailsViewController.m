@@ -28,23 +28,15 @@
     
     self.playTrailer.layer.cornerRadius = 5;
     self.playTrailer.clipsToBounds = YES;
+        
+    self.posterView.image = nil;
+    [self.posterView setImageWithURL:self.movie.posterURL];
     
-    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
+    self.backdropView.image = nil;
+    [self.backdropView setImageWithURL:self.movie.backdropURL];
     
-    NSString *posterURLString = self.movie[@"poster_path"];
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    
-    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-    [self.posterView setImageWithURL:posterURL];
-    
-    NSString *backdropURLString = self.movie[@"backdrop_path"];
-    NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
-    
-    NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
-    [self.backdropView setImageWithURL:backdropURL];
-    
-    self.titleLabel.text = self.movie[@"title"];
-    self.synopsisLabel.text = self.movie[@"overview"];
+    self.titleLabel.text = self.movie.title;
+    self.synopsisLabel.text = self.movie.synopsis;
     
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
@@ -58,7 +50,7 @@
     // Pass the selected object to the new view controller.
     
     TrailerViewController *trailerViewController = [segue destinationViewController];
-    trailerViewController.movieID = self.movie[@"id"];
+    trailerViewController.movieID = self.movie.movieID;
 }
 
 
