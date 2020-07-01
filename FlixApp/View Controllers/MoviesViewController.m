@@ -12,6 +12,7 @@
 #import "DetailsViewController.h"
 #import "SVProgressHUD.h"
 #import "Movie.h"
+#import "MovieApiManager.h"
 
 // Step 2: Configure controller to implement two interfaces the table view expects (data source and delegate)
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
@@ -50,46 +51,37 @@
     __weak __typeof(self) weakSelf = self;
     __strong __typeof(self) strongSelf = weakSelf;
     
-    // Tells control when to stop refreshing -> both when error and when no error
     [self.refreshControl endRefreshing];
     [SVProgressHUD showWithStatus:@"Finding movies..."];
     
-    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-           if (error != nil) {
-               NSLog(@"%@", [error localizedDescription]);
-               
-               UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
-                      message:@"The internet connection appears to be offline."
-               preferredStyle:(UIAlertControllerStyleAlert)];
-               UIAlertAction *tryAction = [UIAlertAction actionWithTitle:@"Try Again"
-                                                                  style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction * _Nonnull action) {
-                                                                    [strongSelf fetchMovies];
-                                                                }];
-               [alert addAction:tryAction];
-               [strongSelf presentViewController:alert animated:YES completion:^{}];
-           }
-           else {
-               
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               
-               NSArray *dictionaries = dataDictionary[@"results"];
-               
-               self.movies  = [NSMutableArray arrayWithArray:[Movie moviesWithDictionaries:dictionaries]];
-               
-               self.filteredData = self.movies;
-               
-               // Step 6: Reload your table view data
-               [self.tableView reloadData];
-           }
-        
+    MovieApiManager *manager = [MovieApiManager new];
+    [manager fetchNowPlaying:^(NSArray *movies, NSError *error) {
+        if (movies) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            
+            self.movies = [NSMutableArray arrayWithArray:movies];
+            self.filteredData = self.movies;
+            
+            [self.tableView reloadData];
+            
+        } else {
+            NSLog(@"%@", [error localizedDescription]);
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
+                   message:@"The internet connection appears to be offline."
+            preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *tryAction = [UIAlertAction actionWithTitle:@"Try Again"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 [strongSelf fetchMovies];
+                                                             }];
+            [alert addAction:tryAction];
+            [strongSelf presentViewController:alert animated:YES completion:^{}];
+        }
         [SVProgressHUD dismiss];
-        
-       }];
-    [task resume];
+    }];
+    
+    [self.refreshControl endRefreshing];
 }
 
 // Step 4: Method for how many rows you have
