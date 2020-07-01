@@ -36,9 +36,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
-    
-    self.movies = [[NSMutableArray alloc] init];
-        
+            
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -80,10 +78,8 @@
                
                NSArray *dictionaries = dataDictionary[@"results"];
                
-               for (NSDictionary *dictionary in dictionaries) {
-                   Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
-                   [self.movies addObject:movie];
-               }
+               self.movies  = [NSMutableArray arrayWithArray:[Movie moviesWithDictionaries:dictionaries]];
+               
                self.filteredData = self.movies;
                
                // Step 6: Reload your table view data
@@ -106,12 +102,7 @@
     
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
-    Movie *movie = self.filteredData[indexPath.row];
-    cell.titleLabel.text = movie.title;
-    cell.synopsisLabel.text = movie.synopsis;
-
-    cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:movie.posterURL];
+    cell.movie = self.filteredData[indexPath.row];
     
     return cell;
 }
@@ -139,8 +130,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
- // Do some stuff when the row is selected
- [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // Do some stuff when the row is selected
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Navigation

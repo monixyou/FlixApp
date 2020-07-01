@@ -185,19 +185,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTw-3E-YJV">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTw-3E-YJV">
                                                 <rect key="frame" x="8" y="229.5" width="104" height="138"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="138" id="OoI-rJ-ji6"/>
-                                                    <constraint firstAttribute="width" constant="104" id="oVo-Qk-QT4"/>
-                                                </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZF-7J-iWU">
                                                 <rect key="frame" x="8" y="376" width="398" height="421"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <mutableString key="text">For this week's app assignment, you'll build a movie browsing app--similar to Fandango and Rotten Tomatoes--that lets a user view and scroll through a list of movies. To do this, you'll learn how to get data from the internet (via an API) and display it in a scrollable list in your app; two core concepts you'll use in virtually every app you'll ever build! When finished, your app will look similar to the app pictured above. For this week's app assignment, you'll build a movie browsing app--similar to Fandango and Rotten Tomatoes--that lets a user view and scroll through a list of movies. To do this, you'll learn how to get data from the internet (via an API) and display it in a scrollable list in your app; two core concepts you'll use in virtually every app you'll ever build! When finished, your app will look similar to the app pictured above. For this week's app assignment, you'll build a movie browsing app--similar to Fandango and Rotten Tomatoes--that lets a user view and scroll through a list of movies. To do this, you'll learn how to get data from the internet (via an API) and display it in a scrollable list in your app; two core concepts you'll use in virtually every app you'll ever build! When finished, your app will look similar to the app pictured above.</mutableString>
+                                                <string key="text">For this week's app assignment, you'll build a movie browsing app--similar to Fandango and Rotten Tomatoes--that lets a user view and scroll through a list of movies. To do this, you'll learn how to get data from the internet (via an API) and display it in a scrollable list in your app; two core concepts you'll use in virtually every app you'll ever build! When finished, your app will look similar to the app pictured above. For this week's app assignment, you'll build a movie browsing app--similar to Fandango and Rotten Tomatoes--that lets a user view and scroll through a list of movies. To do this, you'll learn how to get data from the internet (via an API) and display it in a scrollable list in your app; two core concepts you'll use in virtually every app you'll ever build! When finished, your app will look similar to the app pictured above. For this week's app assignment, you'll build a movie browsing app--similar to Fandango and Rotten Tomatoes--that lets a user view and scroll through a list of movies. To do this, you'll learn how to get data from the internet (via an API) and display it in a scrollable list in your app; two core concepts you'll use in virtually every app you'll ever build! When finished, your app will look similar to the app pictured above.</string>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -222,8 +219,6 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4409724022" green="0.53367117310000001" blue="0.92133218049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="En8-00-nrf"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="y2o-Pt-A2X"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
